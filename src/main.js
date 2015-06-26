@@ -4,6 +4,7 @@ define(function (require, exports, module) {
 
   const Autowoot = Plugin.extend({
     name: 'Autowoot',
+    description: 'Woots every song automatically',
 
     init(id, ext) {
       this._super(id, ext);
@@ -12,14 +13,12 @@ define(function (require, exports, module) {
     },
 
     enable() {
-      this._super();
       this.wootElement = this.$('#woot');
       this.woot();
       API.on(API.ADVANCE, this.onAdvance);
     },
 
     disable() {
-      this._super();
       API.off(API.ADVANCE, this.onAdvance);
     },
 

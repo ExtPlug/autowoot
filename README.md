@@ -5,6 +5,8 @@ ExtPlug plugin that woots every song automatically.
 
 ## Installation
 
+If you do not have ExtPlug yet, get it [here](https://extplug.github.io).
+
 You can install this plugin by going to your ExtPlug settings menu, pressing
 "Install Plugin", and entering this Plugin URL:
 
@@ -45,4 +47,3 @@ The built plugin will be stored at `build/autowoot.js`.
 ## License
 
 [MIT](./LICENSE)
-

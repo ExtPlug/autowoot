@@ -1,5 +1,5 @@
 { "name": "extplug-autowoot"
-, "version": "1.0.0"
+, "version": "1.0.1"
 , "description": "ExtPlug plugin that woots every song automatically."
 , "devDependencies":
   { "del": "^1.2.0"

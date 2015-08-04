@@ -1,27 +1,18 @@
 
 
-define('extplug/autowoot/main',['require','exports','module','extplug/Plugin'],function (require, exports, module) {
+define('extplug/autowoot/main',['require','exports','module','extplug/Plugin','jquery'],function (require, exports, module) {
 
   var Plugin = require('extplug/Plugin');
+  var $ = require('jquery');
 
   var Autowoot = Plugin.extend({
     name: 'Autowoot',
     description: 'Woots every song automatically',
 
-    init: function init(id, ext) {
-      this._super(id, ext);
-      this.onAdvance = this.onAdvance.bind(this);
-      this.woot = this.woot.bind(this);
-    },
-
     enable: function enable() {
-      this.wootElement = this.$('#woot');
+      this.wootElement = $('#woot');
       this.woot();
-      API.on(API.ADVANCE, this.onAdvance);
-    },
-
-    disable: function disable() {
-      API.off(API.ADVANCE, this.onAdvance);
+      this.listenTo(API, API.ADVANCE, this.onAdvance);
     },
 
     allowed: function allowed() {
@@ -36,8 +27,12 @@ define('extplug/autowoot/main',['require','exports','module','extplug/Plugin'],f
     },
 
     onAdvance: function onAdvance() {
+      var _this = this;
+
       if (this.allowed()) {
-        setTimeout(this.woot, 3000 + Math.floor(Math.random() * 5000));
+        setTimeout(function () {
+          _this.woot();
+        }, 3000 + Math.floor(Math.random() * 5000));
       }
     }
 

@@ -1,39 +1,35 @@
-define(function (require, exports, module) {
+/* global API */
+import Plugin from 'extplug/Plugin';
+import $ from 'jquery';
 
-  const Plugin = require('extplug/Plugin');
-  const $ = require('jquery');
+const Autowoot = Plugin.extend({
+  name: 'Autowoot',
+  description: 'Woots every song automatically',
 
-  const Autowoot = Plugin.extend({
-    name: 'Autowoot',
-    description: 'Woots every song automatically',
+  enable() {
+    this.wootElement = $('#woot');
+    this.woot();
+    this.listenTo(API, API.ADVANCE, this.onAdvance);
+  },
 
-    enable() {
-      this.wootElement = $('#woot');
-      this.woot();
-      this.listenTo(API, API.ADVANCE, this.onAdvance);
-    },
+  allowed() {
+    const rules = this.ext.roomSettings.get('rules');
+    return !rules || (rules.allowAutowoot !== false && rules.allowAutowoot != 'false');
+  },
 
-    allowed() {
-      let rules = this.ext.roomSettings.get('rules');
-      return !rules || (rules.allowAutowoot !== false && rules.allowAutowoot != 'false');
-    },
-
-    woot() {
-      if (this.allowed()) {
-        this.wootElement.click();
-      }
-    },
-
-    onAdvance() {
-      if (this.allowed()) {
-        setTimeout(() => {
-          this.woot();
-        }, 3000 + Math.floor(Math.random() * 5000));
-      }
+  woot() {
+    if (this.allowed()) {
+      this.wootElement.click();
     }
+  },
 
-  });
-
-  module.exports = Autowoot;
-
+  onAdvance() {
+    if (this.allowed()) {
+      setTimeout(() => {
+        this.woot();
+      }, 3000 + Math.floor(Math.random() * 5000));
+    }
+  },
 });
+
+export default Autowoot;

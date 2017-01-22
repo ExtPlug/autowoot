@@ -2,15 +2,21 @@
   "name": "extplug-autowoot",
   "version": "1.0.1",
   "description": "ExtPlug plugin that woots every song automatically.",
+  "repository": "extplug/autowoot",
   "keywords": [
-    "extplugin",
+    "extplug-plugin",
     "plug.dj",
     "autowoot"
+  ],
+  "files": [
+    "build",
+    "src"
   ],
   "devDependencies": {
     "extplug-cli": "^1.0.0"
   },
   "scripts": {
+    "prepublishOnly": "npm run build -- --minify",
     "build": "extplug bundle src/main.js build/autowoot.js"
   }
 }

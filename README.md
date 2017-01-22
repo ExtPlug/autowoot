@@ -11,7 +11,7 @@ You can install this plugin by going to your ExtPlug settings menu, pressing
 "Install Plugin", and entering this Plugin URL:
 
 ```
-https://extplug.github.io/autowoot/build/autowoot.js;extplug/autowoot/main
+https://extplug.github.io/autowoot/build/autowoot.js
 ```
 
 ## Room Settings
@@ -35,12 +35,19 @@ The default value for "rules.allowAutowoot" is `true`.
 
 **Note: this section is intended for developers only.**
 
-This plugin uses NPM for dependency management and `gulp` for building.
+First, install dependencies:
 
-```
+```bash
 npm install
-gulp build
 ```
+
+Then, use:
+
+```bash
+npm run build
+```
+
+The plugin will be built using the [ExtPlug CLI](https://github.com/extplug/extplug-cli).
 
 The built plugin will be stored at `build/autowoot.js`.
 

@@ -1,6 +1,6 @@
 {
   "name": "extplug-autowoot",
-  "version": "1.0.1",
+  "version": "2.0.0",
   "description": "ExtPlug plugin that woots every song automatically.",
   "repository": "extplug/autowoot",
   "keywords": [

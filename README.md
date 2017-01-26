@@ -1,6 +1,8 @@
 Autowoot
 ========
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/extplug/autowoot.svg)](https://greenkeeper.io/)
+
 ExtPlug plugin that woots every song automatically.
 
 ## Installation
